@@ -1,0 +1,127 @@
+@define-color accent_color #7983C9;
+@define-color accent_bg_color #7983C9;
+@define-color accent_fg_color #F4F5FE;
+
+@define-color window_bg_color #3D3F55;
+@define-color window_fg_color #D0D4F9;
+
+@define-color view_bg_color #3D3F55;
+@define-color view_fg_color #D0D4F9;
+
+@define-color headerbar_bg_color #3D3F55;
+@define-color headerbar_fg_color #D0D4F9;
+@define-color headerbar_border_color #3D3F55;
+@define-color headerbar_backdrop_color #3D3F55;
+
+@define-color card_bg_color #3D3F55;
+@define-color card_fg_color #D0D4F9;
+@define-color card_border_color #3D3F55;
+
+@define-color popover_bg_color #3D3F55;
+@define-color popover_fg_color #D0D4F9;
+
+@define-color dialog_bg_color #3D3F55;
+@define-color dialog_fg_color #D0D4F9;
+
+@define-color destructive_color #C97979;
+@define-color destructive_bg_color #C97979;;
+@define-color destructive_fg_color #D0D4F9;
+
+@define-color success_color #869A66;
+@define-color success_bg_color #869A66;
+@define-color success_fg_color #D0D4F9;
+
+@define-color warning_color #9A7866;
+@define-color warning_bg_color #9A7866;
+@define-color warning_fg_color #3D3F55;
+
+@define-color error_color #9A6666;
+@define-color error_bg_color #9A6666;
+@define-color error_fg_color #F4F5FE;
+
+window {
+    background-color: @window_bg_color;
+    color: @window_fg_color;
+}
+
+headerbar {
+    background-color: @headerbar_bg_color;
+    color: @headerbar_fg_color;
+    border-bottom: 1px solid @headerbar_border_color;
+    min-height: 40px;
+    padding: 0 6px;
+}
+
+button {
+    background-color: @card_bg_color;
+    color: @window_fg_color;
+    border: 1px solid @card_border_color;
+    border-radius: 6px;
+    padding: 6px 12px;
+}
+
+button:hover {
+    background-color: #3D3F55;
+}
+
+button:active, button:checked {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+    border-color: @accent_bg_color;
+}
+
+button:disabled {
+    opacity: 0.5;
+}
+
+entry {
+    background-color: @view_bg_color;
+    color: @view_fg_color;
+    border: 1px solid @card_border_color;
+    border-radius: 6px;
+    padding: 6px 8px;
+}
+
+entry:focus-within {
+    border-color: @accent_color;
+    outline: 2px solid alpha(@accent_color, 0.4);
+}
+
+popover contents {
+    background-color: @popover_bg_color;
+    color: @popover_fg_color;
+    border: 1px solid @card_border_color;
+    border-radius: 8px;
+    padding: 6px;
+}
+
+scrollbar {
+    background-color: transparent;
+}
+
+scrollbar slider {
+    min-width: 6px;
+    min-height: 6px;
+    border-radius: 6px;
+    background-color: alpha(@window_fg_color, 0.2);
+}
+
+scrollbar slider:hover {
+    background-color: alpha(@window_fg_color, 0.4);
+}
+
+selection,
+:selected {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+}
+
+entry > text > selection,
+entry > text:selected,
+textview > text > selection,
+textview > text:selected,
+label > selection,
+label:selected {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+}

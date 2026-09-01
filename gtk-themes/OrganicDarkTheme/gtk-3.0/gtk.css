@@ -1,0 +1,160 @@
+@define-color bg_color #3D3F55;
+@define-color base_color #3D3F55;
+@define-color fg_color #D0D4F9;
+@define-color text_color #D0D4F9;
+
+@define-color selected_bg_color #7983C9;
+@define-color selected_fg_color #F4F5FE;
+@define-color insensitive_bg_color #666C9A;
+@define-color insensitive_fg_color #D0D4F9;
+@define-color border_color #3D3F55;
+
+@define-color error_color #9A6666;
+@define-color success_color #869A66;
+@define-color warning_color #9A7866;
+
+* {
+    background-clip: padding-box;
+    outline-color: alpha(@selected_bg_color, 0.5);
+    outline-style: solid;
+    outline-offset: -2px;
+}
+
+window, dialog {
+    background-color: @bg_color;
+    color: @fg_color;
+}
+
+.view, textview text {
+    background-color: @base_color;
+    color: @text_color;
+}
+
+headerbar {
+    background-color: @base_color;
+    color: @fg_color;
+    border-bottom: 1px solid @border_color;
+    min-height: 38px;
+    padding: 0 6px;
+}
+
+headerbar:backdrop {
+    background-color: @bg_color;
+    color: @insensitive_fg_color;
+}
+
+button {
+    background-color: @insensitive_bg_color;
+    color: @fg_color;
+    border: 1px solid @border_color;
+    border-radius: 4px;
+    padding: 4px 10px;
+    transition: all 120ms ease-in-out;
+}
+
+button:hover {
+    background-color: #666C9A;
+}
+
+button:active, button:checked {
+    background-color: @selected_bg_color;
+    color: @selected_fg_color;
+    border-color: @selected_bg_color;
+}
+
+button:disabled {
+    background-color: transparent;
+    color: @insensitive_fg_color;
+    border-color: @insensitive_bg_color;
+}
+
+entry {
+    background-color: @base_color;
+    color: @text_color;
+    border: 1px solid @border_color;
+    border-radius: 4px;
+    padding: 4px 8px;
+    min-height: 24px;
+}
+
+entry:focus {
+    border-color: @selected_bg_color;
+}
+
+entry:disabled {
+    background-color: @insensitive_bg_color;
+    color: @insensitive_fg_color;
+}
+
+scrollbar {
+    background-color: transparent;
+}
+
+scrollbar slider {
+    background-color: alpha(@fg_color, 0.2);
+    border-radius: 4px;
+    min-width: 6px;
+    min-height: 6px;
+}
+
+scrollbar slider:hover {
+    background-color: alpha(@fg_color, 0.4);
+}
+
+menu, .menu {
+    background-color: @base_color;
+    border: 1px solid @border_color;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+menuitem {
+    color: @fg_color;
+    padding: 4px 8px;
+    border-radius: 2px;
+}
+
+menuitem:hover {
+    background-color: @selected_bg_color;
+    color: @selected_fg_color;
+}
+
+tooltip {
+    background-color: @base_color;
+    color: @fg_color;
+    border: 1px solid @border_color;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+notebook > header {
+    background-color: @base_color;
+    border-color: @border_color;
+}
+
+notebook > header > tabs > tab {
+    padding: 6px 12px;
+    color: @insensitive_fg_color;
+    border: none;
+}
+
+notebook > header > tabs > tab:checked {
+    color: @fg_color;
+    border-bottom: 2px solid @selected_bg_color;
+}
+
+selection,
+:selected {
+    background-color: @selected_bg_color;
+    color: @selected_fg_color;
+}
+
+entry selection,
+entry:selected,
+textview text selection,
+textview text:selected,
+label selection,
+label:selected {
+    background-color: @selected_bg_color;
+    color: @selected_fg_color;
+}
