@@ -1,13 +1,15 @@
-@define-color bg_color #D0D4F9;
-@define-color base_color #D0D4F9;
+/* OrganicLightTheme - GTK 3.0 */
+
+@define-color bg_color #F4F5FE;
+@define-color base_color #F4F5FE;
 @define-color fg_color #3D3F55;
 @define-color text_color #3D3F55;
 
 @define-color selected_bg_color #7983C9;
 @define-color selected_fg_color #F4F5FE;
-@define-color insensitive_bg_color #A7B0F0;
+@define-color insensitive_bg_color alpha(#3D3F55, 0.05);
 @define-color insensitive_fg_color #666C9A;
-@define-color border_color #3D3F55;
+@define-color border_color alpha(#3D3F55, 0.15);
 
 @define-color error_color #9A6666;
 @define-color success_color #869A66;
@@ -20,6 +22,7 @@
     outline-offset: -2px;
 }
 
+/* Base Surfaces */
 window, dialog {
     background-color: @bg_color;
     color: @fg_color;
@@ -30,12 +33,25 @@ window, dialog {
     color: @text_color;
 }
 
+/* Window decorations (CSD floating windows in Sway) */
+window.csd decoration {
+    box-shadow: 0 4px 14px alpha(#000000, 0.2);
+    border: 1px solid @border_color;
+    border-radius: 6px;
+}
+
+window.solid-csd decoration {
+    border: 1px solid @border_color;
+    border-radius: 6px;
+}
+
+/* Compact Headerbar */
 headerbar {
-    background-color: @base_color;
+    background-color: @bg_color;
     color: @fg_color;
     border-bottom: 1px solid @border_color;
-    min-height: 38px;
-    padding: 0 6px;
+    min-height: 34px;
+    padding: 0 4px;
 }
 
 headerbar:backdrop {
@@ -43,17 +59,20 @@ headerbar:backdrop {
     color: @insensitive_fg_color;
 }
 
+/* Buttons */
 button {
-    background-color: @insensitive_bg_color;
+    background-color: alpha(@fg_color, 0.07);
     color: @fg_color;
     border: 1px solid @border_color;
     border-radius: 4px;
-    padding: 4px 10px;
+    padding: 3px 8px;
     transition: all 120ms ease-in-out;
 }
 
 button:hover {
-    background-color: #3D3F55;
+    background-color: alpha(@fg_color, 0.15);
+    border-color: alpha(@selected_bg_color, 0.5);
+    color: @fg_color;
 }
 
 button:active, button:checked {
@@ -65,15 +84,53 @@ button:active, button:checked {
 button:disabled {
     background-color: transparent;
     color: @insensitive_fg_color;
-    border-color: @insensitive_bg_color;
+    border-color: alpha(@fg_color, 0.06);
 }
 
+/* Headerbar & Flat Buttons */
+headerbar button,
+headerbar button.flat,
+headerbar button.image-button,
+button.flat,
+button.image-button,
+button.titlebutton {
+    background-color: transparent;
+    border-color: transparent;
+    color: @fg_color;
+    padding: 3px 6px;
+}
+
+headerbar button:hover,
+button.flat:hover,
+button.titlebutton:hover {
+    color: @fg_color;
+    background-color: alpha(@fg_color, 0.1);
+    border-color: transparent;
+}
+
+headerbar button:active,
+headerbar button:checked,
+button.flat:active,
+button.flat:checked {
+    color: @selected_fg_color;
+    background-color: @selected_bg_color;
+    border-color: @selected_bg_color;
+}
+
+headerbar button:disabled,
+button.flat:disabled {
+    color: @insensitive_fg_color;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+/* Input Entries */
 entry {
     background-color: @base_color;
     color: @text_color;
     border: 1px solid @border_color;
     border-radius: 4px;
-    padding: 4px 8px;
+    padding: 3px 8px;
     min-height: 24px;
 }
 
@@ -84,8 +141,114 @@ entry:focus {
 entry:disabled {
     background-color: @insensitive_bg_color;
     color: @insensitive_fg_color;
+    border-color: alpha(@fg_color, 0.06);
 }
 
+/* Switches */
+switch {
+    min-width: 34px;
+    min-height: 18px;
+    border-radius: 10px;
+    background-color: alpha(@fg_color, 0.15);
+    border: 1px solid @border_color;
+    transition: all 150ms ease-in-out;
+}
+
+switch:hover {
+    border-color: alpha(@selected_bg_color, 0.5);
+}
+
+switch:checked {
+    background-color: @selected_bg_color;
+    border-color: @selected_bg_color;
+}
+
+switch slider {
+    min-width: 14px;
+    min-height: 14px;
+    margin: 2px;
+    border-radius: 8px;
+    background-color: @selected_fg_color;
+    transition: all 150ms ease-in-out;
+}
+
+/* Checkboxes and Radios */
+check, radio {
+    min-width: 15px;
+    min-height: 15px;
+    margin: 2px;
+    border: 1px solid @border_color;
+    background-color: @base_color;
+}
+
+check {
+    border-radius: 3px;
+}
+
+radio {
+    border-radius: 50%;
+}
+
+check:hover, radio:hover {
+    border-color: @selected_bg_color;
+}
+
+check:checked, radio:checked {
+    background-color: @selected_bg_color;
+    border-color: @selected_bg_color;
+    color: @selected_fg_color;
+}
+
+/* Sliders & Scales */
+scale trough {
+    min-height: 4px;
+    min-width: 4px;
+    border-radius: 2px;
+    background-color: alpha(@fg_color, 0.15);
+}
+
+scale highlight {
+    background-color: @selected_bg_color;
+    border-radius: 2px;
+}
+
+scale slider {
+    min-width: 14px;
+    min-height: 14px;
+    margin: -5px;
+    border-radius: 50%;
+    background-color: @base_color;
+    border: 1px solid alpha(@fg_color, 0.25);
+    box-shadow: 0 1px 3px alpha(#000000, 0.15);
+}
+
+scale slider:hover {
+    background-color: #FFFFFF;
+}
+
+/* Progress and Level Bars */
+progressbar trough {
+    min-height: 5px;
+    border-radius: 3px;
+    background-color: alpha(@fg_color, 0.15);
+}
+
+progressbar progress {
+    background-color: @selected_bg_color;
+    border-radius: 3px;
+}
+
+levelbar block.filled {
+    background-color: @selected_bg_color;
+    border-radius: 2px;
+}
+
+levelbar block.empty {
+    background-color: alpha(@fg_color, 0.15);
+    border-radius: 2px;
+}
+
+/* Scrollbars */
 scrollbar {
     background-color: transparent;
 }
@@ -101,17 +264,19 @@ scrollbar slider:hover {
     background-color: alpha(@fg_color, 0.4);
 }
 
+/* Menus, Popovers and Tooltips */
 menu, .menu {
     background-color: @base_color;
     border: 1px solid @border_color;
-    border-radius: 4px;
-    padding: 4px;
+    border-radius: 5px;
+    padding: 3px;
+    box-shadow: 0 4px 12px alpha(#000000, 0.15);
 }
 
 menuitem {
     color: @fg_color;
-    padding: 4px 8px;
-    border-radius: 2px;
+    padding: 3px 8px;
+    border-radius: 3px;
 }
 
 menuitem:hover {
@@ -120,20 +285,21 @@ menuitem:hover {
 }
 
 tooltip {
-    background-color: @base_color;
-    color: @fg_color;
-    border: 1px solid @border_color;
+    background-color: #3D3F55;
+    color: #F4F5FE;
+    border: 1px solid alpha(#FFFFFF, 0.1);
     border-radius: 4px;
     padding: 4px 8px;
 }
 
+/* Notebook Tabs */
 notebook > header {
-    background-color: @base_color;
+    background-color: @bg_color;
     border-color: @border_color;
 }
 
 notebook > header > tabs > tab {
-    padding: 6px 12px;
+    padding: 4px 10px;
     color: @insensitive_fg_color;
     border: none;
 }
@@ -143,6 +309,7 @@ notebook > header > tabs > tab:checked {
     border-bottom: 2px solid @selected_bg_color;
 }
 
+/* Selection */
 selection,
 :selected {
     background-color: @selected_bg_color;
@@ -159,6 +326,26 @@ label:selected {
     color: @selected_fg_color;
 }
 
+/* Lists and Treeviews */
+list, .sidebar, treeview {
+    background-color: @base_color;
+    color: @text_color;
+}
+
+list > row {
+    padding: 4px 6px;
+}
+
+list > row:hover {
+    background-color: alpha(@fg_color, 0.07);
+}
+
+list > row:selected {
+    background-color: @selected_bg_color;
+    color: @selected_fg_color;
+}
+
+/* Icons */
 image,
 .image,
 image:hover,
@@ -167,43 +354,11 @@ image:disabled {
     color: inherit;
 }
 
-/* 2. Asegurar color de iconos simbólicos */
 .symbolic,
 image.symbolic {
     color: @fg_color;
 }
 
-/* 3. Botones en la barra de herramientas, headerbar y botones planos */
-headerbar button,
-headerbar button.flat,
-headerbar button.image-button,
-button.flat,
-button.image-button,
-button.titlebutton {
-    color: @fg_color;
-}
-
-headerbar button:hover,
-button.flat:hover,
-button.titlebutton:hover {
-    color: @fg_color;
-    background-color: alpha(@fg_color, 0.1);
-}
-
-headerbar button:active,
-headerbar button:checked,
-button.flat:active,
-button.flat:checked {
-    color: @selected_fg_color;
-    background-color: @selected_bg_color;
-}
-
-headerbar button:disabled,
-button.flat:disabled {
-    color: @insensitive_fg_color;
-}
-
-/* 4. Botones de navegación del selector de archivos (Pathbar / Breadcrumbs) */
 .path-bar button,
 pathbar button {
     color: @fg_color;

@@ -1,3 +1,5 @@
+/* OrganicDarkTheme - GTK 4.0 / Libadwaita */
+
 @define-color accent_color #7983C9;
 @define-color accent_bg_color #7983C9;
 @define-color accent_fg_color #F4F5FE;
@@ -5,31 +7,31 @@
 @define-color window_bg_color #3D3F55;
 @define-color window_fg_color #D0D4F9;
 
-@define-color view_bg_color #3D3F55;
+@define-color view_bg_color #553D3D;
 @define-color view_fg_color #D0D4F9;
 
 @define-color headerbar_bg_color #3D3F55;
 @define-color headerbar_fg_color #D0D4F9;
-@define-color headerbar_border_color #3D3F55;
+@define-color headerbar_border_color alpha(#D0D4F9, 0.14);
 @define-color headerbar_backdrop_color #3D3F55;
 
-@define-color card_bg_color #3D3F55;
+@define-color card_bg_color alpha(#D0D4F9, 0.07);
 @define-color card_fg_color #D0D4F9;
-@define-color card_border_color #3D3F55;
+@define-color card_border_color alpha(#D0D4F9, 0.14);
 
-@define-color popover_bg_color #3D3F55;
+@define-color popover_bg_color #55453D;
 @define-color popover_fg_color #D0D4F9;
 
-@define-color dialog_bg_color #3D3F55;
+@define-color dialog_bg_color #55453D;
 @define-color dialog_fg_color #D0D4F9;
 
 @define-color destructive_color #C97979;
-@define-color destructive_bg_color #C97979;;
-@define-color destructive_fg_color #D0D4F9;
+@define-color destructive_bg_color #C97979;
+@define-color destructive_fg_color #F4F5FE;
 
 @define-color success_color #869A66;
 @define-color success_bg_color #869A66;
-@define-color success_fg_color #D0D4F9;
+@define-color success_fg_color #F4F5FE;
 
 @define-color warning_color #9A7866;
 @define-color warning_bg_color #9A7866;
@@ -39,29 +41,39 @@
 @define-color error_bg_color #9A6666;
 @define-color error_fg_color #F4F5FE;
 
+/* Base Surfaces */
 window {
     background-color: @window_bg_color;
     color: @window_fg_color;
 }
 
+.view, textview text {
+    background-color: @view_bg_color;
+    color: @view_fg_color;
+}
+
+/* Compact Headerbar */
 headerbar {
     background-color: @headerbar_bg_color;
     color: @headerbar_fg_color;
     border-bottom: 1px solid @headerbar_border_color;
-    min-height: 40px;
-    padding: 0 6px;
+    min-height: 34px;
+    padding: 0 4px;
 }
 
+/* Buttons */
 button {
-    background-color: @card_bg_color;
+    background-color: alpha(@window_fg_color, 0.08);
     color: @window_fg_color;
     border: 1px solid @card_border_color;
-    border-radius: 6px;
-    padding: 6px 12px;
+    border-radius: 4px;
+    padding: 3px 8px;
+    transition: all 120ms ease-in-out;
 }
 
 button:hover {
-    background-color: #3D3F55;
+    background-color: alpha(@window_fg_color, 0.16);
+    border-color: alpha(@accent_color, 0.5);
 }
 
 button:active, button:checked {
@@ -71,15 +83,47 @@ button:active, button:checked {
 }
 
 button:disabled {
-    opacity: 0.5;
+    opacity: 0.45;
 }
 
+/* Headerbar & Flat Buttons */
+headerbar button,
+button.flat,
+button.image-button,
+windowcontrols button {
+    background-color: transparent;
+    border-color: transparent;
+    color: @window_fg_color;
+    padding: 3px 6px;
+}
+
+headerbar button:hover,
+button.flat:hover,
+windowcontrols button:hover {
+    color: @window_fg_color;
+    background-color: alpha(@window_fg_color, 0.12);
+    border-color: transparent;
+}
+
+headerbar button:active,
+headerbar button:checked {
+    color: @accent_fg_color;
+    background-color: @accent_bg_color;
+}
+
+headerbar button:disabled,
+button.flat:disabled {
+    color: alpha(@window_fg_color, 0.4);
+}
+
+/* Entries */
 entry {
     background-color: @view_bg_color;
     color: @view_fg_color;
     border: 1px solid @card_border_color;
-    border-radius: 6px;
-    padding: 6px 8px;
+    border-radius: 4px;
+    padding: 3px 8px;
+    min-height: 24px;
 }
 
 entry:focus-within {
@@ -87,14 +131,103 @@ entry:focus-within {
     outline: 2px solid alpha(@accent_color, 0.4);
 }
 
+/* Popovers & Dialogs */
 popover contents {
     background-color: @popover_bg_color;
     color: @popover_fg_color;
     border: 1px solid @card_border_color;
-    border-radius: 8px;
-    padding: 6px;
+    border-radius: 6px;
+    padding: 4px;
+    box-shadow: 0 4px 14px alpha(#000000, 0.4);
 }
 
+/* Switches */
+switch {
+    min-width: 34px;
+    min-height: 18px;
+    border-radius: 10px;
+    background-color: alpha(#000000, 0.25);
+    border: 1px solid @card_border_color;
+    transition: all 150ms ease-in-out;
+}
+
+switch:checked {
+    background-color: @accent_bg_color;
+    border-color: @accent_bg_color;
+}
+
+switch > slider {
+    min-width: 14px;
+    min-height: 14px;
+    margin: 2px;
+    border-radius: 8px;
+    background-color: @accent_fg_color;
+    transition: all 150ms ease-in-out;
+}
+
+/* Checkboxes and Radios */
+checkbutton check {
+    min-width: 15px;
+    min-height: 15px;
+    margin: 2px;
+    border-radius: 3px;
+    border: 1px solid @card_border_color;
+    background-color: alpha(#000000, 0.2);
+}
+
+checkbutton check:hover {
+    border-color: @accent_color;
+}
+
+checkbutton check:checked {
+    background-color: @accent_bg_color;
+    border-color: @accent_bg_color;
+    color: @accent_fg_color;
+}
+
+checkbutton radio {
+    border-radius: 50%;
+}
+
+/* Sliders & Scales */
+scale trough {
+    min-height: 4px;
+    min-width: 4px;
+    border-radius: 2px;
+    background-color: alpha(@window_fg_color, 0.15);
+}
+
+scale highlight {
+    background-color: @accent_bg_color;
+    border-radius: 2px;
+}
+
+scale slider {
+    min-width: 14px;
+    min-height: 14px;
+    margin: -5px;
+    border-radius: 50%;
+    background-color: @accent_fg_color;
+    border: 1px solid alpha(#000000, 0.2);
+}
+
+scale slider:hover {
+    background-color: #FFFFFF;
+}
+
+/* Progressbars */
+progressbar trough {
+    min-height: 5px;
+    border-radius: 3px;
+    background-color: alpha(@window_fg_color, 0.15);
+}
+
+progressbar progress {
+    background-color: @accent_bg_color;
+    border-radius: 3px;
+}
+
+/* Scrollbars */
 scrollbar {
     background-color: transparent;
 }
@@ -102,7 +235,7 @@ scrollbar {
 scrollbar slider {
     min-width: 6px;
     min-height: 6px;
-    border-radius: 6px;
+    border-radius: 4px;
     background-color: alpha(@window_fg_color, 0.2);
 }
 
@@ -110,6 +243,7 @@ scrollbar slider:hover {
     background-color: alpha(@window_fg_color, 0.4);
 }
 
+/* Selection */
 selection,
 :selected {
     background-color: @accent_bg_color;
@@ -126,6 +260,32 @@ label:selected {
     color: @accent_fg_color;
 }
 
+/* Lists and Cards */
+list > row {
+    padding: 4px 6px;
+    border-radius: 3px;
+}
+
+list > row:hover {
+    background-color: alpha(@window_fg_color, 0.08);
+}
+
+list > row:selected {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+}
+
+.boxed-list {
+    background-color: @card_bg_color;
+    border: 1px solid @card_border_color;
+    border-radius: 6px;
+}
+
+.navigation-sidebar {
+    background-color: @window_bg_color;
+}
+
+/* Icons */
 image,
 picture {
     color: inherit;
@@ -134,29 +294,4 @@ picture {
 .symbolic,
 image.symbolic {
     color: @window_fg_color;
-}
-
-headerbar button,
-button.flat,
-button.image-button,
-windowcontrols button {
-    color: @window_fg_color;
-}
-
-headerbar button:hover,
-button.flat:hover,
-windowcontrols button:hover {
-    color: @window_fg_color;
-    background-color: alpha(@window_fg_color, 0.1);
-}
-
-headerbar button:active,
-headerbar button:checked {
-    color: @accent_fg_color;
-    background-color: @accent_bg_color;
-}
-
-headerbar button:disabled,
-button.flat:disabled {
-    color: alpha(@window_fg_color, 0.4);
 }

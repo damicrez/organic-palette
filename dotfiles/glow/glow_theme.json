@@ -1,0 +1,109 @@
+{
+  "document": {
+    "block_prefix": "\n",
+    "block_suffix": "\n",
+    "margin": 2
+  },
+  "paragraph": {},
+  "heading": {
+    "bold": true
+  },
+  "h1": {
+    "prefix": "# ",
+    "color": "#ABC979",
+    "bold": true
+  },
+  "h2": {
+    "prefix": "## ",
+    "color": "#A7B0F0",
+    "bold": true
+  },
+  "h3": {
+    "prefix": "### ",
+    "color": "#C99679",
+    "bold": true
+  },
+  "h4": {
+    "prefix": "#### ",
+    "color": "#8F9BE9",
+    "bold": true
+  },
+  "h5": {
+    "prefix": "##### ",
+    "color": "#869A66"
+  },
+  "h6": {
+    "prefix": "###### ",
+    "color": "#9A7866"
+  },
+  "text": {
+    "color": "#9a6666"
+  },
+  "bold": {
+    "bold": true,
+    "color": "#C99679"
+  },
+  "italic": {
+    "italic": true,
+    "color": "#D0D4F9"
+  },
+  "strikethrough": {
+    "crossed_out": true,
+    "color": "#9A6666"
+  },
+  "link": {
+    "color": "#7983C9",
+    "underline": true
+  },
+  "link_text": {
+    "color": "#8F9BE9",
+    "bold": true
+  },
+  "code": {
+    "color": "#ABC979",
+    "background_color": "#3D3F55"
+  },
+  "code_block": {
+    "color": "#9a6666",
+    "margin": 1,
+    "chroma": {
+      "text": { "color": "#9a6666" },
+      "error": { "color": "#C97979", "background_color": "#553D3D" },
+      "comment": { "color": "#869A66", "italic": true },
+      "keyword": { "color": "#A7B0F0", "bold": true },
+      "operator": { "color": "#7983C9" },
+      "string": { "color": "#ABC979" },
+      "number": { "color": "#C99679" },
+      "name": { "color": "#9a6666" },
+      "name_builtin": { "color": "#8F9BE9" },
+      "name_function": { "color": "#8F9BE9" },
+      "name_tag": { "color": "#A7B0F0" },
+      "literal": { "color": "#C99679" }
+    }
+  },
+  "table": {
+    "center_separator": "┼",
+    "column_separator": "│",
+    "row_separator": "─"
+  },
+  "list": {
+    "level_indent": 2
+  },
+  "item": {
+    "block_prefix": "• ",
+    "color": "#D0D4F9"
+  },
+  "enumeration": {
+    "color": "#A7B0F0"
+  },
+  "block_quote": {
+    "indent": 1,
+    "indent_token": "│ ",
+    "italic": true,
+    "color": "#666C9A"
+  },
+  "horizontal_rule": {
+    "symbol": "─",
+    "color": "#4B553D"
+  }
+}

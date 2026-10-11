@@ -2,7 +2,7 @@
 local M = {}
 
 -- Configurar el tipo de entorno como tema claro
-M.type = "light"
+M.type = "dark"
 
 -- Mapeo semántico para Light Theme
 M.base_30 = {
